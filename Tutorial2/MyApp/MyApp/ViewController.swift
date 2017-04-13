@@ -20,12 +20,14 @@ class ViewController: UIViewController {
     // MARK: - Initalisation
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.cyan
+        let blueColor = UIColor(red: 0.0/255.0, green: 118.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        self.view.backgroundColor = blueColor
         
         /* label */
         self.label.text = "What's your name ?"
-        self.label.textColor = UIColor.red
+        self.label.textColor = UIColor.white
         self.label.textAlignment = .center
         self.label.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         self.label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +77,7 @@ class ViewController: UIViewController {
         self.view.addSubview(self.button)
         
         /* label 2 */
-        self.label2.textColor = UIColor.red
+        self.label2.textColor = UIColor.black
         self.label2.textAlignment = .center
         self.label2.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         self.label2.translatesAutoresizingMaskIntoConstraints = false
@@ -117,7 +119,11 @@ class ViewController: UIViewController {
     }
     
     func buttonAction(sender: UIButton) {
-        self.label2.text = self.textfield.text
+        guard let name = self.textfield.text else {
+            self.label2.text = ""
+            return
+        }
+        self.label2.text = "Your name is " + name
     }
 
 }
